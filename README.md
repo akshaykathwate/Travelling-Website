@@ -1,8 +1,3 @@
-# React + Vite
+Visit the Travelling web "Voyage" :  https://travelingweb14.netlify.app/
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+"Voyage" is your passport to a world of travel inspiration. Immerse yourself in captivating home tours, explore hidden gems, and stay informed with our insightful blog. Crafted with React for seamless navigation and adorned with the elegance of Tailwind CSS, embark on a visually stunning journey with VoyageBasic – Where Every Click Unveils a New Adventure!
