@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import pune from '../assets/pune.jpg'
 import tourdata from './toursdata';
-
+import { TourTypeButton } from "../utils/TourTypeButton";
 
 const Tours = () => {
   const [selectedType, setSelectedType] = useState("all");
@@ -18,8 +18,8 @@ const Tours = () => {
         <div className="relative">
           <img
             src={pune}
-            alt="Spain_image"
-            className=" w-full h-[450px] object-cover"
+            alt="Shaniwarwada image Pune"
+            className="w-full h-[450px] object-cover"
           />
           <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50"></div>
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center">
@@ -33,38 +33,28 @@ const Tours = () => {
         </div>
       </section>
 
-      <section className="my-8 mx-4 bg-slate-50 p-6 pb-4 flex flex-col justify-center items-center w-screen ">
+      <section className=" mx-auto bg-slate-100  flex flex-col justify-center items-center w-screen">
         <div className="flex justify-center space-x-4 mt-8 bg-black text-slate-100 px-6 text-center py-3 rounded-full">
-          <button
-            onClick={() => setSelectedType("all")}
-            className={`tour-type-button ${
-              selectedType === "all" &&
-              " bg-slate-600  animate-pulse text-xl rounded-full py-2 px-3 "
-            }`}
-          >
-            All
-          </button>
-          <button
-            onClick={() => setSelectedType("spiritual")}
-            className={`tour-type-button ${
-              selectedType === "spiritual" &&
-              " bg-slate-600  animate-pulse text-xl rounded-full py-2 px-3 "
-            }`}
-          >
-            Spiritual
-          </button>
-          <button
-            onClick={() => setSelectedType("scenic")}
-            className={`tour-type-button ${
-              selectedType === "scenic" &&
-              " bg-slate-600  animate-pulse text-xl rounded-full py-2 px-3 "
-            }`}
-          >
-            Scenic
-          </button>
+          <TourTypeButton
+            label="All"
+            type="all"
+            selectedType={selectedType}
+            setSelectedType={setSelectedType}
+          />
+          <TourTypeButton
+            label="spiritual"
+            type="spiritual"
+            selectedType={selectedType}
+            setSelectedType={setSelectedType}
+          />
+          <TourTypeButton
+            label="scenic"
+            type="scenic"
+            selectedType={selectedType}
+            setSelectedType={setSelectedType}
+          />
         </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-8">
+        <div className="tour-grid ">
           {filteredTours.map((tour) => (
             <Link
               to={{
@@ -72,7 +62,7 @@ const Tours = () => {
                 state: { tourData: tour },
               }}
               key={tour.id}
-              className="tour-card max-w-xs rounded overflow-hidden shadow-lg transition duration-500 ease-in-out transform hover:scale-105 hover:shadow-2xl pb-3"
+              className="tour-card max-w-xs rounded overflow-hidden shadow-lg transition duration-500 ease-in-out transform hover:scale-105 hover:shadow-2xl "
             >
               <div className="relative h-40 overflow-hidden">
                 <img

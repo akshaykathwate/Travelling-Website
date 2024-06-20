@@ -8,7 +8,7 @@ import  Navbar  from './components/Navbar';
 import {Routes,Route} from 'react-router-dom';
 const App = () => {
   return (
-    <>
+    <main className="overflow-hidden">
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -18,7 +18,7 @@ const App = () => {
   
       </Routes>
       <Footer />
-    </>
+    </main>
   );
 }; 
 

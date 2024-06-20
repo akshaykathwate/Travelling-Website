@@ -14,7 +14,7 @@ const Footer = () => {
         <div className="flex justify-center items-center space-x-3">
           <div className="bg-red-700 md:px-5 md:py-3 px-3 py-2 text-center rounded-lg text-slate-100 font-serif md:text-xl text-sm">
             <NavLink to="/tours">
-              <span className=" md:text-xl text-sm"> Book Destination</span>
+              <button className=" md:text-xl text-sm"> Book Destination</button>
             </NavLink>
           </div>
         </div>
