@@ -1,3 +1,7 @@
 .active{
-    @apply text-red-500  
+    @apply text-purple-500 underline gap-2 hover:underline hover:text-blue-500
+}
+
+.list-circle {
+  list-style-type: circle; 
 }

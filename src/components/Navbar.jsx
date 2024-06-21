@@ -1,8 +1,11 @@
-import { GiCoolSpices } from "react-icons/gi";
-import { FaTimes } from "react-icons/fa"; // Import the remove icon
-import { NavLink } from "react-router-dom";
-import "../components/Navbar.css";
 import { useState } from "react";
+import { FaTimes } from "react-icons/fa";
+import { GiCoolSpices } from "react-icons/gi";
+import { NavLink } from "react-router-dom";
+import { MdMenuOpen } from "react-icons/md";
+import { IoMdCloseCircleOutline } from "react-icons/io";
+
+import "../components/Navbar.css";
 
 const Navbar = () => {
   const navItems = [
@@ -12,7 +15,7 @@ const Navbar = () => {
     { id: 4, text: "Tours", link: "/tours" },
   ];
 
-  const [menu, setMenu] = useState(true);
+  const [menu, setMenu] = useState(false);
 
   const toggleMenu = () => {
     setMenu(!menu);
@@ -20,15 +23,18 @@ const Navbar = () => {
 
   return (
     <div className="relative">
-      <div className="absolute top-0 left-0 right-0 bg-white-900 text-slate-400 font-bold z-10">
-        <div className="flex justify-around items-center h-14 px-4 md:px-8">
-          <div className="text-xl font-bold flex justify-between items-center gap-5 md:text-3xl">
+      <div className="absolute top-0 left-0 right-0 bg-white-900 text-slate-400 font-bold z-10 shadow-md">
+        <div className="flex justify-between md:justify-around h-14 px-4 md:px-8 items-center">
+          <div className="text-2xl font-bold flex items-center gap-5 md:text-3xl text-purple-">
             <GiCoolSpices />
             Voyage
           </div>
           <ul className="hidden md:flex md:justify-evenly space-x-5">
             {navItems.map((item) => (
-              <li key={item.id} className="hover:text-black hover:scale-125">
+              <li
+                key={item.id}
+                className="hover:text-black hover:scale-125 transition-all"
+              >
                 <NavLink
                   to={item.link}
                   className={({ isActive, isPending }) =>
@@ -40,38 +46,53 @@ const Navbar = () => {
               </li>
             ))}
           </ul>
-
-          <div className="md:hidden flex justify-start">
-            <button className="" onClick={toggleMenu}>
-              Menu
+          <div className="md:hidden flex items-center">
+            <button
+              onClick={toggleMenu}
+              className="bg-orange-500 text-white px-3 py-2 rounded"
+            >
+              <MdMenuOpen />
+            </button>
+          </div>
+        </div>
+        <div
+          className={`md:hidden fixed inset-0 bg-black bg-opacity-70 transition-transform transform ${
+            menu ? "translate-x-0" : "translate-x-full"
+          }`}
+        >
+          <div className="flex justify-end ">
+            <button onClick={toggleMenu} className="text-white text-4xl p-4">
+              <IoMdCloseCircleOutline />
             </button>
           </div>
 
-          <div
-            className={`md:hidden fixed inset-y-0 right-0 overflow-hidden transition-transform transform  ${
-              menu ? "translate-x-full" : "translate-x-0"
-            }`}
-          >
-            <button
-              className="fixed inset-0 w-full h-full bg-black opacity-50"
-              onClick={toggleMenu}
-            ></button>
-            <div className="flex flex-col justify-start items-start bg-navy-500 text-white h-full w-56 p-4">
-              <div className="flex justify-end">
-                <button className="text-white" onClick={toggleMenu}>
-                  <FaTimes />
-                </button>
-              </div>
+          <div className="flex justify-between  inset-y-0 w-full  text-slate-200 text-2xl px-5 ">
+            <ul
+              className="flex flex-col gap-5 w-1/2 "
+            >
               {navItems.map((item) => (
-                <NavLink
+                <li
                   key={item.id}
-                  to={item.link}
-                  className="text-white hover:text-blue-500 py-2"
+                  className="hover:text-purple-800 transition-all "
                 >
-                  {item.text}
-                </NavLink>
+                  <NavLink
+                    to={item.link}
+                    className={({ isActive, isPending }) =>
+                      isPending
+                        ? "pending"
+                        : isActive
+                        ? "active "
+                        : ""
+                    }
+                    onClick={toggleMenu}
+                  >
+                    {item.text}
+                    <hr />
+                  </NavLink>
+                </li>
               ))}
-            </div>
+            </ul>
+            <hr />
           </div>
         </div>
       </div>
